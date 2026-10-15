@@ -1,0 +1,48 @@
+# Python caches and build artifacts
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+build/
+dist/
+.eggs/
+
+# Test, lint and notebook caches
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+.coverage.*
+htmlcov/
+.ipynb_checkpoints/
+
+# Editors and OS
+.vscode/
+.idea/
+.cursor/
+*.swp
+*~
+.DS_Store
+
+# Environment and secrets
+.env
+.env.*
+*.secret.json
+
+# Run outputs and logs
+outputs/
+checkpoints/
+wandb/
+*.log
+
+# Local data: only the training set data/train/ is tracked; equivalence fixtures are built from run outputs
+/data/*
+!/data/train/
+!/data/README.md
+tests/equivalence/fixtures/
+
+# Local leftovers that are not part of the project
+/test/
+/data_process/
+/scripts/data_prep/
+/tests/

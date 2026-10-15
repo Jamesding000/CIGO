@@ -1,0 +1,9 @@
+# @package _global_
+# CIGO: counterfactual turns (prefix replay) with the uncertainty reward at weight 0.5.
+algorithm:
+  adv_estimator: prefix_group
+  prefix_replay:
+    enable: true
+    beta_ur: 0.5
+trainer:
+  total_epochs: 1

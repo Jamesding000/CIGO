@@ -1,0 +1,10 @@
+# Step-level intrinsic reward on GRPO (the GRPO + IR arm); fields documented in algorithm.py.
+
+# Required when using verl.utils.omega_conf_to_dataclass to instantiate dataclass configs
+_target_: verl.trainer.config.ProcessRewardConfig
+
+# Add the intrinsic (process) reward
+enable: False
+
+# Weight of the process advantage
+coef: 0.5

@@ -1,0 +1,10 @@
+# Step-level annotation reward on GRPO (the GRPO + AR arm); fields documented in algorithm.py.
+
+# Required when using verl.utils.omega_conf_to_dataclass to instantiate dataclass configs
+_target_: verl.trainer.config.AnnotationRewardConfig
+
+# Add the annotation reward (exclusive with process_reward.enable)
+enable: False
+
+# Weight of the annotation advantage
+coef: 0.5

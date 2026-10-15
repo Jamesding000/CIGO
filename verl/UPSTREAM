@@ -1,0 +1,8 @@
+upstream: https://github.com/verl-project/verl
+commit:   114ad569f73882b927c21f637d000117703066a3 (2026-04-13, "[fully_async]fix: terminated training when streaming_generation raise exception (#5977)")
+license:  Apache-2.0 (verl/LICENSE, verl/Notice.txt)
+Our changes to verl/ are the difference from that upstream commit, excluding the omitted directories listed below.
+Not included: `verl/recipe`, which upstream is a git submodule (verl-project/verl-recipe); `git archive` does
+not export submodule contents and nothing here uses it. `verl/.gitmodules` is kept as upstream wrote it.
+Omitted on this branch: upstream docs/, examples/, docker/, tests/, .github/, agent-tool config folders and their
+markdown files; README.md replaced by a short note. Training and evaluation use none of them.

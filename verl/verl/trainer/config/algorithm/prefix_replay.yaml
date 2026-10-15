@@ -1,0 +1,49 @@
+# Prefix replay (adv_estimator=prefix_group); fields documented in algorithm.py.
+
+# Required when using verl.utils.omega_conf_to_dataclass to instantiate dataclass configs
+_target_: verl.trainer.config.PrefixReplayConfig
+
+# Train on prefix-replay rows (requires algorithm.adv_estimator=prefix_group)
+enable: False
+
+# Share of each batch's prompts drawn fresh from the dataset; the rest are replayed prefixes
+fresh_root_ratio: 0.5
+
+# Buffer size (>= ttl_steps * max_inserts_per_step)
+capacity: 1600
+
+# Steps a stored prefix stays eligible
+ttl_steps: 25
+
+# Times a prefix is trained on before it is retired
+max_visits: 1
+
+# Tool-call budget: most calls a stored prefix may hold
+max_depth: 3
+
+# Most continuations admitted to the buffer per step
+max_inserts_per_step: 64
+
+# Sampling weight decay per step of a prefix's age
+recency_gamma: 0.95
+
+# Tokens a prefix must leave free below the prompt length
+admission_margin: 512
+
+# Largest share of the buffer one seed corpus may hold (1.0 disables the cap)
+max_source_share: 0.5
+
+# Buffer size below which the share cap is not enforced
+source_share_min_size: 32
+
+# Floor of the group std dividing the raw reward
+std_floor: 1e-6
+
+# Weight of the normalized intrinsic reward (0 = the CT arm)
+beta_ur: 0.5
+
+# Floor of the group std dividing the intrinsic reward
+ur_std_floor: 0.01
+
+# Winsorize the centred intrinsic reward at this percentile on each side (0 disables)
+ur_outlier_clip_percentile: 0.05

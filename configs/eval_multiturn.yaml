@@ -1,0 +1,27 @@
+# Main-table evaluation of the tool-using policies (scripts/eval.sh), with the training prompts and tool.
+use_tool: true
+tool_config: verl/verl/tools/config/video_tool_config.yaml
+# results folder: evaluation_maxpix<max_pixels>_maxfrm<max_frames>_number<suffix>/<benchmark>/
+suffix: _stepwise_t3
+
+# exported for cigo/eval/inference.py; the decode values equal its defaults
+env:
+  # training's single_turn_response_length
+  MAX_RESPONSE_TOKENS: 4096
+  EVAL_TOOL_BUDGET: 3
+  # 3 calls plus the answering turn
+  MAX_ASSISTANT_TURNS: 4
+  # a row unanswered at the turn cap gets one forced final answer
+  EVAL_FORCE_ANSWER: 1
+  EVAL_TEMPERATURE: 0.6
+  EVAL_TOP_P: 1.0
+  EVAL_REPETITION_PENALTY: 1.05
+
+# run order and input per benchmark: short videos 384x384 at 256 frames, long videos 224x224 at 1024 frames
+benchmarks:
+  videomme: {max_pixels: "224*224", max_frames: 1024}
+  charades: {max_pixels: "384*384", max_frames: 256}
+  videommmu: {max_pixels: "384*384", max_frames: 256}
+  longvideobench: {max_pixels: "224*224", max_frames: 1024}
+  mlvu: {max_pixels: "224*224", max_frames: 1024}
+  lvbench: {max_pixels: "224*224", max_frames: 1024}

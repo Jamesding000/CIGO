@@ -1,0 +1,29 @@
+tools:
+  - class_name: verl.tools.video_clip_tool.GetVideoClipFrameTool
+    config:
+      type: native
+      min_pixels: 3136    # 4*28*28
+      max_pixels: 50176   # 224*224
+      fps: 2
+    tool_schema:
+      type: function
+      function:
+        name: get_video_clip_frame
+        description: >-
+          Inspect a time range of the video closely. Returns up to 64 frames evenly spaced across
+          [start_time, end_time]; the video is stored at 2 frames per second, so a range shorter than
+          32 seconds returns 2 frames for each of its seconds. A narrow range therefore comes back
+          densely sampled, while a range covering the whole video returns the same overview you
+          already hold.
+        parameters:
+          type: object
+          properties:
+            start_time:
+              type: number
+              description: The start time (in seconds) of the video segment, keeping two decimal places.
+            end_time:
+              type: number
+              description: The end time (in seconds) of the video segment, keeping two decimal places.
+          required:
+            - start_time
+            - end_time

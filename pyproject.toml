@@ -1,0 +1,17 @@
+#   pip install --no-deps -e verl -e .      (or PYTHONPATH=<repo>/verl:<repo>; dependencies: environment.yml)
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cigo"
+version = "0.1.0"
+description = "Prompts, reward and evaluation harness for the video tool-agent RL code in verl/"
+requires-python = ">=3.10"
+
+[tool.setuptools.packages.find]
+include = ["cigo*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["verl", ".", "tests", "tests/equivalence"]
+testpaths = ["tests"]

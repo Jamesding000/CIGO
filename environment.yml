@@ -1,0 +1,41 @@
+# Training and evaluation environment (Linux x86_64, CUDA 12.8 wheels).
+#   conda env create -f environment.yml && conda activate cigo
+#   pip install flash-attn==2.8.3 --no-build-isolation   # needs torch installed first
+#   pip install --no-deps -e verl -e .                     # this repository's verl fork, then cigo
+name: cigo
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  - pip:
+      # engine
+      - torch==2.8.0
+      - torchvision==0.23.0
+      - vllm==0.11.0
+      - transformers==4.57.1
+      - tensordict==0.12.1
+      - ray[default]==2.52.1
+      # video input (frame lists read through qwen-vl-utils; av is its decoder)
+      - qwen-vl-utils==0.0.14
+      - av==16.0.1
+      - pillow==11.3.0
+      # the rest of verl's requirements
+      - accelerate==1.11.0
+      - codetiming==1.4.0
+      - datasets==4.4.1
+      - dill==0.4.0
+      - hydra-core==1.3.2
+      - numpy==2.2.6
+      - pandas==2.3.3
+      - peft==0.18.1
+      - pyarrow==22.0.0
+      - pybind11==3.0.1
+      - pylatexenc==2.10
+      - torchdata==0.11.0
+      - packaging==25.0
+      - wandb==0.23.0
+      # data download and tests
+      - huggingface_hub==0.36.2
+      - hf_transfer==0.1.9
+      - pytest==9.0.1
